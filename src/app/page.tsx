@@ -2,11 +2,9 @@ import { Button } from '@/components/ui/button'
 
 export default function Home() {
     return (
-        <main className="bg-primary">
+        <main>
             HomePage
-            <div>
-                <Button variant="default">Button</Button>
-            </div>
+            <Button variant="secondary">Button</Button>
         </main>
     )
 }
