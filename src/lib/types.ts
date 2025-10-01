@@ -6,6 +6,14 @@ export interface Movie {
     release_date: string
 }
 
+export interface TVShow {
+    id: number
+    name: string
+    overview: string
+    poster_path: string
+    first_air_date: string
+}
+
 export interface TMDBResponse<T> {
     page: number
     results: T[]

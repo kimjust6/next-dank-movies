@@ -1,5 +1,5 @@
 import { TMDB_BASE_URL } from '@/lib/constants'
-import { Movie, TMDBResponse } from '@/lib/types'
+import { Movie, TMDBResponse, TVShow } from '@/lib/types'
 
 const TMDB_API_KEY = process.env.TMDB_API_KEY
 
@@ -43,6 +43,14 @@ export const getPopularMovies = async (page: number = 1) => {
     })
 }
 
+// Get top rated movies
+export const getTopRatedMovies = async (page: number = 1) => {
+    return get<TMDBResponse<Movie>>('/movie/top_rated', {
+        language: 'en-US',
+        page,
+    })
+}
+
 // Search movies
 export const searchMovies = async (query: string, page: number = 1) => {
     return get<TMDBResponse<Movie>>('/search/movie', {
@@ -55,4 +63,36 @@ export const searchMovies = async (query: string, page: number = 1) => {
 // Get movie details
 export const getMovieDetails = async (id: number) => {
     return get<Movie>(`/movie/${id}`, { language: 'en-US' })
+}
+
+// TV Shows
+
+// Get popular TV shows
+export const getPopularTV = async (page: number = 1) => {
+    return get<TMDBResponse<TVShow>>('/tv/popular', {
+        language: 'en-US',
+        page,
+    })
+}
+
+// Get top rated TV shows
+export const getTopRatedTV = async (page: number = 1) => {
+    return get<TMDBResponse<TVShow>>('/tv/top_rated', {
+        language: 'en-US',
+        page,
+    })
+}
+
+// Get TV show details
+export const getTVDetails = async (id: number) => {
+    return get<TVShow>(`/tv/${id}`, { language: 'en-US' })
+}
+
+// Search TV shows
+export const searchTV = async (query: string, page: number = 1) => {
+    return get<TMDBResponse<TVShow>>('/search/tv', {
+        query,
+        language: 'en-US',
+        page,
+    })
 }
