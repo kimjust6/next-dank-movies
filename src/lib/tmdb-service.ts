@@ -1,5 +1,5 @@
 import { TMDB_BASE_URL } from '@/lib/constants'
-import { Movie, TMDBResponse, TVShow } from '@/lib/types'
+import { Movie, MovieDetail, TMDBResponse, TVShow } from '@/lib/types'
 
 const TMDB_API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY
 
@@ -62,7 +62,7 @@ export const searchMovies = async (query: string, page: number = 1) => {
 
 // Get movie details
 export const getMovieDetails = async (id: number) => {
-    return get<Movie>(`/movie/${id}`, { language: 'en-US' })
+    return get<MovieDetail>(`/movie/${id}`, { language: 'en-US' })
 }
 
 // TV Shows
@@ -92,6 +92,38 @@ export const getTVDetails = async (id: number) => {
 export const searchTV = async (query: string, page: number = 1) => {
     return get<TMDBResponse<TVShow>>('/search/tv', {
         query,
+        language: 'en-US',
+        page,
+    })
+}
+
+// Get similar movies
+export const getSimilarMovies = async (id: number, page: number = 1) => {
+    return get<TMDBResponse<Movie>>(`/movie/${id}/similar`, {
+        language: 'en-US',
+        page,
+    })
+}
+
+// Get recommended movies
+export const getRecommendedMovies = async (id: number, page: number = 1) => {
+    return get<TMDBResponse<Movie>>(`/movie/${id}/recommendations`, {
+        language: 'en-US',
+        page,
+    })
+}
+
+// Get similar TV shows
+export const getSimilarTV = async (id: number, page: number = 1) => {
+    return get<TMDBResponse<TVShow>>(`/tv/${id}/similar`, {
+        language: 'en-US',
+        page,
+    })
+}
+
+// Get recommended TV shows
+export const getRecommendedTV = async (id: number, page: number = 1) => {
+    return get<TMDBResponse<TVShow>>(`/tv/${id}/recommendations`, {
         language: 'en-US',
         page,
     })

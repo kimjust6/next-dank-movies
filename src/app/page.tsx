@@ -2,19 +2,22 @@
 
 import { Button } from '@/components/ui/button'
 import { searchMovies } from '@/lib/tmdb-service'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function Home() {
-    useEffect(() => {
+    const [film, setFilm] = useState<string>()
+    function dankMeme() {
         searchMovies('Inception').then((response) => {
-            console.log('Search Results:', response)
+            setFilm(JSON.stringify(response))
         })
-    }, [])
+    }
 
     return (
         <main>
-            HomePage
-            <Button variant="secondary">Button</Button>
+            {film}
+            <Button onClick={dankMeme} variant="secondary">
+                Button
+            </Button>
         </main>
     )
 }

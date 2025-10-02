@@ -94,17 +94,24 @@ export type SuperusersRecord = {
 }
 
 export type FilmListsRecord = {
+	cover?: string
 	created?: IsoDateString
+	description?: string
 	id: string
 	title?: string
 	updated?: IsoDateString
 }
 
 export type FilmsRecord = {
+	backdrop?: string
 	created?: IsoDateString
 	filmList?: RecordIdString
+	genreIds?: string
 	id: string
 	imdbScore?: number
+	originalLanguage?: string
+	originalTitle?: string
+	overview?: string
 	poster?: string
 	releaseDate?: IsoDateString
 	runtime?: number
@@ -112,6 +119,7 @@ export type FilmsRecord = {
 	title: string
 	tmdbId: string
 	tmdbScore?: number
+	tmdbVoteCount?: number
 	tomatoMeter?: number
 	updated?: IsoDateString
 	watched?: IsoDateString
