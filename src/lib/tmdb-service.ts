@@ -1,5 +1,6 @@
 import { TMDB_BASE_URL, TMDB_POSTER_BASE_URL } from '@/lib/constants'
 import {
+    backdropSize,
     Movie,
     MovieDetail,
     posterSize,
@@ -140,4 +141,11 @@ export function getPosterUrl(
     size: posterSize = posterSize.w500
 ) {
     return `${TMDB_POSTER_BASE_URL}/${size}${posterPath}`
+}
+
+export function getBackdropUrl(
+    backdropPath: string,
+    size: backdropSize = backdropSize.w780
+) {
+    return `${TMDB_POSTER_BASE_URL}/${size}${backdropPath}`
 }

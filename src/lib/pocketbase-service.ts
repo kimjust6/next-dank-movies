@@ -4,9 +4,10 @@ import type {
     FilmsResponse,
     IsoDateString,
 } from '@/lib/pocketbase-types'
-import { MovieDetail, posterSize } from '@/lib/types'
+import { getBackdropUrl, getPosterUrl } from '@/lib/tmdb-service'
+import { backdropSize, MovieDetail, posterSize } from '@/lib/types'
+import { generateShortUUID } from '@/lib/utils'
 import PocketBase from 'pocketbase'
-import { getPosterUrl } from '@/lib/tmdb-service'
 
 const POCKET_BASE_URL = process.env.NEXT_PUBLIC_POCKET_BASE_URL
 
@@ -28,7 +29,7 @@ export async function getFilmById(id: string): Promise<FilmsResponse> {
 
 export function mapTmdbFilmToPocketFilm(
     data: MovieDetail,
-    id: string = crypto.randomUUID(),
+    id: string = generateShortUUID(),
     filmList: string = '',
     suggestedBy: string = '',
     tomatoMeter: number = -1,
@@ -42,12 +43,12 @@ export function mapTmdbFilmToPocketFilm(
         id,
         updated,
         watched,
-        backdropUrl: data.backdrop_path,
+        backdropUrl: getBackdropUrl(data.backdrop_path, backdropSize.original),
         genres: data.genres?.map((genre) => genre.name)?.join(';'),
         originalLanguage: data.original_language,
         originalTitle: data.original_title,
         overview: data.overview,
-        poster: getPosterUrl(data.poster_path, posterSize.original),
+        posterUrl: getPosterUrl(data.poster_path, posterSize.original),
         releaseDate: data.release_date,
         runtime: data.runtime ?? -1,
         title: data.title,
