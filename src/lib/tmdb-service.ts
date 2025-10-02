@@ -1,5 +1,11 @@
-import { TMDB_BASE_URL } from '@/lib/constants'
-import { Movie, MovieDetail, TMDBResponse, TVShow } from '@/lib/types'
+import { TMDB_BASE_URL, TMDB_POSTER_BASE_URL } from '@/lib/constants'
+import {
+    Movie,
+    MovieDetail,
+    posterSize,
+    TMDBResponse,
+    TVShow,
+} from '@/lib/types'
 
 const TMDB_API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY
 
@@ -127,4 +133,11 @@ export const getRecommendedTV = async (id: number, page: number = 1) => {
         language: 'en-US',
         page,
     })
+}
+
+export function getPosterUrl(
+    posterPath: string,
+    size: posterSize = posterSize.w500
+) {
+    return `${TMDB_POSTER_BASE_URL}/${size}${posterPath}`
 }

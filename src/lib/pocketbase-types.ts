@@ -96,23 +96,23 @@ export type SuperusersRecord = {
 export type FilmListsRecord = {
 	cover?: string
 	created?: IsoDateString
-	description?: string
 	id: string
 	title?: string
 	updated?: IsoDateString
 }
 
 export type FilmsRecord = {
-	backdrop?: string
+	backdropUrl?: string
 	created?: IsoDateString
 	filmList?: RecordIdString
-	genreIds?: string
+	genres?: string
 	id: string
 	imdbScore?: number
 	originalLanguage?: string
 	originalTitle?: string
 	overview?: string
 	poster?: string
+	posterUrl?: string
 	releaseDate?: IsoDateString
 	runtime?: number
 	suggestedBy?: RecordIdString
