@@ -18,7 +18,7 @@ export default function Home() {
     }
 
     return (
-        <main>
+        <main className="typography">
             {film}
             <Button onClick={dankMeme} variant="secondary">
                 Button
