@@ -1,8 +1,28 @@
 import { Search, Bell, User, Menu } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { ThemeToggle } from '@/components/theme-toggle'
 
 export function Navbar() {
+    const navbar = [
+        {
+            name: 'Dashboard',
+            href: 'dashboard',
+        },
+        {
+            name: 'Browse',
+            href: 'browse',
+        },
+        {
+            name: 'My Lists',
+            href: 'my-lists',
+        },
+        {
+            name: 'Categories',
+            href: 'categories',
+        },
+    ]
+
     return (
         <header className="border-border/40 bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 border-b backdrop-blur">
             <div className="container mx-auto px-4">
@@ -21,30 +41,17 @@ export function Navbar() {
                         </h1>
 
                         <nav className="hidden items-center gap-6 md:flex">
-                            <a
-                                href="#"
-                                className="text-foreground hover:text-primary text-sm font-medium text-nowrap transition-colors"
-                            >
-                                Dashboard
-                            </a>
-                            <a
-                                href="#"
-                                className="text-muted-foreground hover:text-primary text-sm font-medium text-nowrap transition-colors"
-                            >
-                                Browse
-                            </a>
-                            <a
-                                href="#"
-                                className="text-muted-foreground hover:text-primary text-sm font-medium text-nowrap transition-colors"
-                            >
-                                My Lists
-                            </a>
-                            <a
-                                href="#"
-                                className="text-muted-foreground hover:text-primary text-sm font-medium text-nowrap transition-colors"
-                            >
-                                Categories
-                            </a>
+                            {navbar.map((item) => {
+                                return (
+                                    <a
+                                        key={item.name}
+                                        href={item.href}
+                                        className="text-muted-foreground hover:text-primary text-sm font-medium text-nowrap transition-colors"
+                                    >
+                                        {item.name}
+                                    </a>
+                                )
+                            })}
                         </nav>
                     </div>
 
@@ -66,9 +73,12 @@ export function Navbar() {
                             <span className="bg-primary absolute top-1.5 right-1.5 h-2 w-2 rounded-full" />
                         </Button>
 
+                        <ThemeToggle />
+
                         <Button variant="ghost" size="icon">
                             <User className="h-5 w-5" />
                         </Button>
+
                     </div>
                 </div>
             </div>
