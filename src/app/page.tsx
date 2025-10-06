@@ -1,6 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
+import { addFilmToPocketBase } from '@/lib/pocketbase-service'
 import { getMovieDetails, searchMovies } from '@/lib/tmdb-service'
 import { useEffect, useState } from 'react'
 
@@ -12,6 +13,7 @@ export default function Home() {
         // })
         getMovieDetails(27205).then((response) => {
             setFilm(JSON.stringify(response))
+            addFilmToPocketBase(response)
         })
     }
 

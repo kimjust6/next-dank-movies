@@ -23,25 +23,25 @@ export function Navbar() {
                         <nav className="hidden items-center gap-6 md:flex">
                             <a
                                 href="#"
-                                className="text-foreground hover:text-primary text-sm font-medium transition-colors"
+                                className="text-foreground hover:text-primary text-sm font-medium text-nowrap transition-colors"
                             >
                                 Dashboard
                             </a>
                             <a
                                 href="#"
-                                className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+                                className="text-muted-foreground hover:text-primary text-sm font-medium text-nowrap transition-colors"
                             >
                                 Browse
                             </a>
                             <a
                                 href="#"
-                                className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+                                className="text-muted-foreground hover:text-primary text-sm font-medium text-nowrap transition-colors"
                             >
                                 My Lists
                             </a>
                             <a
                                 href="#"
-                                className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+                                className="text-muted-foreground hover:text-primary text-sm font-medium text-nowrap transition-colors"
                             >
                                 Categories
                             </a>

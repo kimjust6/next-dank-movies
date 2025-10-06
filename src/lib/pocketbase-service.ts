@@ -29,10 +29,10 @@ export async function getFilmById(id: string): Promise<FilmsResponse> {
 
 export function mapTmdbFilmToPocketFilm(
     data: MovieDetail,
-    id: string = generateShortUUID(),
     filmList: string = '',
     suggestedBy: string = '',
     tomatoMeter: number = -1,
+    id: string = generateShortUUID(),
     updated: IsoDateString = new Date().toISOString(),
     watched: IsoDateString = new Date().toISOString()
 ): FilmsRecord {
