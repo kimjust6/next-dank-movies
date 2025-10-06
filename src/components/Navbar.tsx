@@ -1,7 +1,8 @@
-import { Search, Bell, User, Menu } from 'lucide-react'
+import { ThemeToggle } from '@/components/theme-toggle'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { ThemeToggle } from '@/components/theme-toggle'
+import { Bell, Menu, Search, User } from 'lucide-react'
+import Link from 'next/link'
 
 export function Navbar() {
     const navbar = [
@@ -24,7 +25,7 @@ export function Navbar() {
     ]
 
     return (
-        <header className="border-border/40 bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 border-b backdrop-blur">
+        <header className="border-border/40 bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 border-b backdrop-blur transition-all">
             <div className="container mx-auto px-4">
                 <div className="flex h-16 items-center justify-between gap-4">
                     <div className="flex items-center gap-8">
@@ -36,9 +37,14 @@ export function Navbar() {
                             <Menu className="h-5 w-5" />
                         </Button>
 
-                        <h1 className="font-mono text-xl font-semibold tracking-tight">
-                            cinema<span className="text-primary">.</span>
-                        </h1>
+                        <Link href="/">
+                            <h1 className="cursor-pointer font-mono text-xl font-semibold tracking-tight transition-all duration-300 ease-in-out">
+                                cinema
+                                <span className="text-primary inline-block transition-all duration-300">
+                                    .
+                                </span>
+                            </h1>
+                        </Link>
 
                         <nav className="hidden items-center gap-6 md:flex">
                             {navbar.map((item) => {
@@ -78,7 +84,6 @@ export function Navbar() {
                         <Button variant="ghost" size="icon">
                             <User className="h-5 w-5" />
                         </Button>
-
                     </div>
                 </div>
             </div>
