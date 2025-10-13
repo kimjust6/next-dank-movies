@@ -8,19 +8,19 @@ export function Navbar() {
     const navbar = [
         {
             name: 'Dashboard',
-            href: 'dashboard',
+            href: '/dashboard',
         },
         {
             name: 'Browse',
-            href: 'browse',
+            href: '/browse',
         },
         {
             name: 'My Lists',
-            href: 'my-lists',
+            href: '/my-lists',
         },
         {
             name: 'Categories',
-            href: 'categories',
+            href: '/categories',
         },
     ]
 
@@ -49,13 +49,13 @@ export function Navbar() {
                         <nav className="hidden items-center gap-6 md:flex">
                             {navbar.map((item) => {
                                 return (
-                                    <a
+                                    <Link
                                         key={item.name}
                                         href={item.href}
                                         className="text-muted-foreground hover:text-primary text-sm font-medium text-nowrap transition-colors"
                                     >
                                         {item.name}
-                                    </a>
+                                    </Link>
                                 )
                             })}
                         </nav>
