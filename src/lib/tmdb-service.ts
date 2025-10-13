@@ -140,6 +140,9 @@ export function getPosterUrl(
     posterPath: string,
     size: posterSize = posterSize.w500
 ) {
+    if (!posterPath) {
+        return '/image-missing.svg'
+    }
     return `${TMDB_POSTER_BASE_URL}/${size}${posterPath}`
 }
 

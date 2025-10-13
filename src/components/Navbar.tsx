@@ -67,7 +67,7 @@ export function Navbar() {
                         <Button
                             variant="ghost"
                             size="icon"
-                            className="relative"
+                            className="relative cursor-pointer"
                         >
                             <Bell className="h-5 w-5" />
                             <span className="bg-primary absolute top-1.5 right-1.5 h-2 w-2 rounded-full" />
@@ -75,7 +75,11 @@ export function Navbar() {
 
                         <ThemeToggle />
 
-                        <Button variant="ghost" size="icon">
+                        <Button
+                            variant="ghost"
+                            size="icon"
+                            className="cursor-pointer"
+                        >
                             <User className="h-5 w-5" />
                         </Button>
                     </div>
