@@ -1,8 +1,8 @@
 import { ThemeToggle } from '@/components/theme-toggle'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Bell, Menu, Search, User } from 'lucide-react'
+import { Bell, Menu, User } from 'lucide-react'
 import Link from 'next/link'
+import SearchComponent from './SearchComponent'
 
 export function Navbar() {
     const navbar = [
@@ -62,13 +62,7 @@ export function Navbar() {
                     </div>
 
                     <div className="flex items-center gap-3">
-                        <div className="relative hidden sm:block">
-                            <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
-                            <Input
-                                placeholder="Search movies..."
-                                className="bg-secondary/50 border-border/50 w-64 pl-9"
-                            />
-                        </div>
+                        <SearchComponent />
 
                         <Button
                             variant="ghost"
