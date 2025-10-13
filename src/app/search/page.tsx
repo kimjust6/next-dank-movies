@@ -1,29 +1,45 @@
+import { MovieCard } from '@/components/MovieCard'
 import { searchMovies } from '@/lib/tmdb-service'
 import { Movie, TMDBResponse } from '@/lib/types'
-import { MovieCard } from '@/components/MovieCard'
 
-async function page() {
-    const movies: TMDBResponse<Movie> = await searchMovies('batman')
-    
+type SearchPageProps = {
+    searchParams: {
+        q?: string
+    }
+}
+
+async function SearchPage({ searchParams }: SearchPageProps) {
+    const searchTerm = searchParams.q
+    let movies: TMDBResponse<Movie> | null = null
+
+    if (searchTerm) {
+        movies = await searchMovies(searchTerm)
+    }
+
     return (
         <main className="container mx-auto px-4 py-8">
             <div className="mb-8">
-                <h1 className="text-3xl font-bold mb-2">Search Results</h1>
-                <p className="text-muted-foreground">
-                    Found {movies.total_results} movies
-                </p>
+                <h1 className="mb-2 text-3xl font-bold">Search Results</h1>
+                {movies && searchTerm && (
+                    <p className="text-muted-foreground">
+                        Found {movies.total_results} results for &quot;
+                        {searchTerm}&quot;
+                    </p>
+                )}
             </div>
-            
-            {movies.results.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+
+            {movies && movies.results.length > 0 ? (
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
                     {movies.results.map((movie) => (
                         <MovieCard key={movie.id} movie={movie} />
                     ))}
                 </div>
             ) : (
-                <div className="text-center py-12">
+                <div className="py-12 text-center">
                     <p className="text-muted-foreground text-lg">
-                        No movies found. Try a different search.
+                        {searchTerm
+                            ? 'No movies found for your search.'
+                            : 'Please enter a search term to find movies.'}
                     </p>
                 </div>
             )}
@@ -31,4 +47,4 @@ async function page() {
     )
 }
 
-export default page
+export default SearchPage
