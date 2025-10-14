@@ -1,5 +1,9 @@
-import { TMDB_FILMS_COLLECTION } from '@/lib/constants'
+import {
+    TMDB_FILMS_COLLECTION,
+    TMDB_FILMS_LIST_COLLECTION,
+} from '@/lib/constants'
 import type {
+    FilmListsResponse,
     FilmsRecord,
     FilmsResponse,
     IsoDateString,
@@ -21,6 +25,28 @@ export async function getAllFilms(): Promise<FilmsResponse[]> {
     return await pb
         .collection(TMDB_FILMS_COLLECTION)
         .getFullList<FilmsResponse>()
+}
+
+export async function getAllFilmLists(): Promise<FilmListsResponse[]> {
+    return await pb
+        .collection(TMDB_FILMS_LIST_COLLECTION)
+        .getFullList<FilmListsResponse>()
+}
+
+export async function getFilmListById(id: string): Promise<FilmListsResponse> {
+    return await pb
+        .collection(TMDB_FILMS_LIST_COLLECTION)
+        .getOne<FilmListsResponse>(id)
+}
+
+export async function getFilmsByListId(
+    listId: string
+): Promise<FilmsResponse[]> {
+    return await pb
+        .collection(TMDB_FILMS_COLLECTION)
+        .getFullList<FilmsResponse>({
+            filter: `filmList = "${listId}"`,
+        })
 }
 
 export async function getFilmById(id: string): Promise<FilmsResponse> {

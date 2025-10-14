@@ -11,16 +11,12 @@ export function Navbar() {
             href: '/dashboard',
         },
         {
-            name: 'Browse',
+            name: 'Browse Lists',
             href: '/browse',
         },
         {
             name: 'My Lists',
             href: '/my-lists',
-        },
-        {
-            name: 'Categories',
-            href: '/categories',
         },
     ]
 
