@@ -119,3 +119,19 @@ export async function getFilmsPaginated(
     return await pb.collection(TMDB_FILMS_COLLECTION).getList(page, perPage)
     // returns: { items, page, perPage, totalItems, totalPages }
 }
+
+export async function loginWithPassword(email: string, password: string) {
+    return await pb.collection('users').authWithPassword(email, password)
+}
+
+export async function loginWithGoogle() {
+    return await pb.collection('users').authWithOAuth2({ provider: 'google' })
+}
+
+export function logout() {
+    pb.authStore.clear()
+}
+
+export function isUserLoggedIn() {
+    return pb.authStore.isValid
+}

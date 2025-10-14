@@ -1,7 +1,11 @@
-import React from 'react'
+import { LoginForm } from '@/components/LoginForm'
 
 function Login() {
-    return <div>Login</div>
+    return (
+        <div className="flex min-h-screen items-center justify-center">
+            <LoginForm />
+        </div>
+    )
 }
 
 export default Login
