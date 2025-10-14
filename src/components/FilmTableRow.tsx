@@ -3,6 +3,7 @@
 import { TableCell, TableRow } from '@/components/ui/table'
 import type { FilmsResponse } from '@/lib/pocketbase-types'
 import { getPosterUrl } from '@/lib/tmdb-service'
+import { posterSize } from '@/lib/types'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -15,7 +16,7 @@ export function FilmTableRow({ film }: FilmTableRowProps) {
         <TableRow>
             <TableCell>
                 <Image
-                    src={getPosterUrl(film.poster)}
+                    src={getPosterUrl(film.poster, posterSize.w154)}
                     alt={film.title}
                     width={100}
                     height={150}
@@ -24,12 +25,27 @@ export function FilmTableRow({ film }: FilmTableRowProps) {
                 />
             </TableCell>
             <TableCell>
-                <Link href={`/movie/${film.tmdbId}`}>{film.title}</Link>
+                <Link
+                    href={`/movie/${film.tmdbId}`}
+                >{`${film.title} [${new Date(film.releaseDate).getFullYear()}]`}</Link>
+            </TableCell>
+
+            <TableCell>
+                {typeof film.tmdbScore === 'number'
+                    ? film.tmdbScore.toFixed(1)
+                    : 'N/A'}
+            </TableCell>
+            <TableCell>{film.genres.split(';').join(', ')}</TableCell>
+            <TableCell>
+                {typeof film.runtime === 'number'
+                    ? `${Math.floor(film.runtime / 60)}h ${film.runtime % 60}m`
+                    : '—'}
             </TableCell>
             <TableCell>
-                {new Date(film.releaseDate).toLocaleDateString()}
+                {film.created
+                    ? new Date(film.created).toLocaleDateString()
+                    : '—'}
             </TableCell>
-            <TableCell>{film.tmdbScore.toFixed(1)}</TableCell>
         </TableRow>
     )
 }

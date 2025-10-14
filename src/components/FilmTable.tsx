@@ -21,8 +21,10 @@ export function FilmTable({ films, className }: FilmTableProps) {
                 <TableRow>
                     <TableHead className="w-[100px]">Poster</TableHead>
                     <TableHead>Title</TableHead>
-                    <TableHead>Release Date</TableHead>
-                    <TableHead>Rating</TableHead>
+                    <TableHead>TMDB Score</TableHead>
+                    <TableHead>Genres</TableHead>
+                    <TableHead>Runtime</TableHead>
+                    <TableHead>Watch Date</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>

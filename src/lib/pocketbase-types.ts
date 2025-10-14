@@ -139,13 +139,18 @@ export type UsersRecord = {
 	verified?: boolean
 }
 
+export enum WatchHistoryWatchStatusOptions {
+	"watched" = "watched",
+	"failed" = "failed",
+	"absent" = "absent",
+}
 export type WatchHistoryRecord = {
 	created?: IsoDateString
 	film: RecordIdString
 	id: string
 	updated?: IsoDateString
 	user: RecordIdString
-	watchStatus?: string
+	watchStatus?: WatchHistoryWatchStatusOptions
 }
 
 // Response types include system fields and match responses from the PocketBase API
