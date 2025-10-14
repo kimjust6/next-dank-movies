@@ -1,13 +1,12 @@
+import { FilmListTableRow } from '@/components/FilmListTableRow'
 import {
     Table,
     TableBody,
-    TableCaption,
     TableHead,
     TableHeader,
     TableRow,
 } from '@/components/ui/table'
 import type { FilmListsResponse } from '@/lib/pocketbase-types'
-import { FilmListTableRow } from '@/components/FilmListTableRow'
 
 interface FilmListTableProps {
     filmLists: FilmListsResponse[]
@@ -16,7 +15,6 @@ interface FilmListTableProps {
 export function FilmListTable({ filmLists }: FilmListTableProps) {
     return (
         <Table>
-            <TableCaption>A list of your film lists.</TableCaption>
             <TableHeader>
                 <TableRow>
                     <TableHead className="w-[100px]">Cover</TableHead>

@@ -1,6 +1,3 @@
-import type { FilmListsResponse } from '@/lib/pocketbase-types'
-import Image from 'next/image'
-import Link from 'next/link'
 import {
     Card,
     CardContent,
@@ -8,7 +5,10 @@ import {
     CardFooter,
     CardHeader,
     CardTitle,
-} from './ui/card'
+} from '@/components/ui/card'
+import type { FilmListsResponse } from '@/lib/pocketbase-types'
+import Image from 'next/image'
+import Link from 'next/link'
 
 interface FilmListCardProps {
     filmList: FilmListsResponse

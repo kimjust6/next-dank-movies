@@ -1,8 +1,8 @@
+import SearchComponent from '@/components/SearchComponent'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { Button } from '@/components/ui/button'
 import { Bell, Menu, User } from 'lucide-react'
 import Link from 'next/link'
-import SearchComponent from './SearchComponent'
 
 export function Navbar() {
     const navbar = [
