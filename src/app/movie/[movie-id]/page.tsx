@@ -15,7 +15,8 @@ type MovieDetailsPageProps = {
 }
 
 async function MovieDetails({ params }: MovieDetailsPageProps) {
-    const movieId = parseInt(params['movie-id'])
+    const paramsValue = await params
+    const movieId = parseInt(paramsValue['movie-id'])
     const movie = await getMovieDetails(movieId)
 
     const posterUrl = getPosterUrl(movie.poster_path, posterSize.w500)
@@ -27,9 +28,10 @@ async function MovieDetails({ params }: MovieDetailsPageProps) {
                 <Image
                     src={backdropUrl}
                     alt={movie.title}
-                    layout="fill"
-                    objectFit="cover"
+                    fill
+                    style={{ objectFit: 'cover' }}
                     className="opacity-20"
+                    priority
                 />
                 <div className="from-background via-background/80 absolute inset-0 bg-gradient-to-t to-transparent" />
             </div>
